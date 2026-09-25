@@ -1,0 +1,470 @@
+@font-face {
+  font-family: "Bungee";
+  src: url("../assets/fonts/Bungee-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Neue Haas";
+  src: url("../assets/fonts/NeueHaasDisplayRoman.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Neue Haas";
+  src: url("../assets/fonts/NeueHaasDisplayRomanItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+}
+
+:root {
+  --ovg-pink: #fb95ff;
+  --ovg-purple: #4b258d;
+  --ovg-bright-purple: #8459ce;
+  --ovg-black: #000;
+  --ovg-muted: #615a67;
+  --page-gutter: clamp(1.25rem, 5vw, 6rem);
+  --home-gap-x: 50%;
+  --home-gap-y: 50%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html {
+  min-width: 20rem;
+  background: #fff;
+  scrollbar-color: #39343e var(--ovg-black);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+html {
+  min-width: 20rem;
+  background: var(--ovg-black);
+  scrollbar-color: #39343e var(--ovg-black);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 2px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--ovg-black);
+}
+
+html::-webkit-scrollbar-thumb {
+  min-height: 3rem;
+  border-radius: 999px;
+  background: #39343e;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--ovg-muted);
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+a,
+button {
+  -webkit-user-drag: none;
+}
+
+.ovg-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow-x: hidden;
+  color: var(--ovg-purple);
+  background: #fff;
+  font-family: "Neue Haas", Arial, sans-serif;
+}
+
+.ovg-page.is-client-transitioning {
+  overflow: hidden;
+}
+
+.site-header {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding: clamp(1.45rem, 4.2vh, 3.25rem) var(--page-gutter) 0;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(1.15rem, 2.4vw, 2.6rem);
+  font-family: "Bungee", Impact, sans-serif;
+  font-size: clamp(0.72rem, 0.88vw, 0.98rem);
+  line-height: 1;
+  color: var(--ovg-pink);
+  text-transform: uppercase;
+}
+
+.has-js:not(.navigation-ready) .site-nav {
+  opacity: 0;
+}
+
+.is-initial-nav-entry .site-nav {
+  animation: ovg-nav-enter 400ms both;
+}
+
+.site-nav a {
+  padding: 0.35rem 0.1rem;
+  text-decoration: none;
+  text-underline-offset: 0.3em;
+  transition: color 160ms ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a[aria-current="page"] {
+  color: var(--ovg-bright-purple);
+}
+
+.site-nav a:focus-visible,
+.site-footer a:focus-visible {
+  outline: 2px solid var(--ovg-purple);
+  outline-offset: 4px;
+}
+
+.home-main {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  padding: clamp(6rem, 13vh, 9rem) var(--page-gutter) clamp(4rem, 8vh, 6rem);
+}
+
+.home-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 63rem);
+  transform: translate3d(0, -2rem, 0);
+  transform-origin: var(--home-gap-x) var(--home-gap-y);
+  backface-visibility: hidden;
+}
+
+.has-js:not(.home-ready) .ovg-home .home-hero {
+  visibility: hidden;
+}
+
+.ovg-logo {
+  display: block;
+  width: clamp(17rem, 35vw, 28rem);
+  height: auto;
+  flex: none;
+}
+
+.tagline {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 clamp(1.2rem, 2.2vw, 2.4rem);
+  font-family: "Bungee", Impact, sans-serif;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.tagline span:first-child {
+  color: var(--ovg-purple);
+}
+
+.tagline span:last-child {
+  margin-bottom: -0.08em;
+  padding-bottom: 0.08em;
+  color: var(--ovg-bright-purple);
+}
+
+.ovg-about {
+  position: relative;
+}
+
+.about-main {
+  display: grid;
+  min-height: max(100vh, 36rem);
+  min-height: max(100svh, 36rem);
+  place-items: center;
+  padding: clamp(7.5rem, 18vh, 12rem) var(--page-gutter);
+}
+
+.about-copy {
+  width: min(100%, 48rem);
+  text-align: center;
+  transform-origin: center;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.has-js .about-copy {
+  visibility: hidden;
+}
+
+.has-js.fonts-ready .about-copy {
+  visibility: visible;
+}
+
+.about-copy h1 {
+  margin: 0 0 clamp(1.5rem, 3.4vh, 2.5rem);
+  font-family: "Neue Haas", Arial, sans-serif;
+  font-size: clamp(1.35rem, 2.15vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.16;
+  color: var(--ovg-pink);
+}
+
+.about-lede {
+  margin: 0 0 clamp(1rem, 2.4vh, 1.65rem);
+  font-size: clamp(1.05rem, 1.55vw, 1.45rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.16;
+  color: var(--ovg-pink);
+}
+
+.about-body {
+  margin: 0;
+  font-size: clamp(0.98rem, 1.35vw, 1.22rem);
+  line-height: 1.3;
+  color: var(--ovg-purple);
+}
+
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .tagline span:last-child {
+    color: var(--ovg-pink);
+  }
+}
+
+.site-footer {
+  padding: 0 var(--page-gutter) clamp(1.45rem, 3.8vh, 3rem);
+  color: var(--ovg-pink);
+  font-size: clamp(0.7rem, 0.82vw, 0.9rem);
+}
+
+.ovg-about .site-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  padding-top: clamp(1rem, 2.5vh, 1.75rem);
+  border-top: 1px solid color-mix(in srgb, var(--ovg-pink), transparent 25%);
+}
+
+.site-footer p {
+  margin: 0;
+  font-family: "Bungee", Impact, sans-serif;
+}
+
+.site-footer a {
+  font-family: "Bungee", Impact, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* In-document page transition: navigation remains mounted and unchanged. */
+[hidden] {
+  display: none !important;
+}
+
+.ovg-page.is-client-transitioning .home-main,
+.ovg-page.is-client-transitioning .about-main {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.ovg-page.is-client-transitioning .transition-target {
+  z-index: 2;
+}
+
+.ovg-page.is-client-transitioning .home-hero,
+.ovg-page.is-client-transitioning .about-copy {
+  will-change: transform, opacity;
+}
+
+.ovg-page.is-client-transitioning .site-footer {
+  position: fixed;
+  z-index: 15;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.is-transitioning-to-about.is-transition-running .home-hero {
+  animation: ovg-home-exit 400ms cubic-bezier(0.7, 0, 0.3, 1) both;
+}
+
+.is-transitioning-to-about.is-transition-running .about-copy {
+  animation: ovg-about-enter 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.is-transitioning-to-about.is-transition-running .site-footer {
+  animation: ovg-footer-enter 300ms 20ms ease-out both;
+}
+
+.is-transitioning-to-home.is-transition-running .about-copy {
+  animation: ovg-about-exit 150ms cubic-bezier(0.55, 0, 0.45, 1) both;
+}
+
+.is-initial-home-entry .home-hero {
+  animation: ovg-home-enter 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.is-transitioning-to-home.is-transition-running .home-hero {
+  animation: ovg-home-enter 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.is-transitioning-to-home.is-transition-running .site-footer {
+  animation: ovg-footer-exit 100ms ease-in both;
+}
+
+@keyframes ovg-home-exit {
+  from {
+    column-gap: 0;
+    opacity: 1;
+    transform: translate3d(0, -2rem, 0) scale(1);
+  }
+  50% { opacity: 0.45; }
+  to {
+    column-gap: clamp(0.6rem, 1vw, 1.5rem);
+    opacity: 0.5;
+    transform: translate3d(0, -2rem, 0) scale(50);
+  }
+}
+
+@keyframes ovg-about-enter {
+  from {
+    opacity: 0.35;
+    transform: translateZ(0) scale(0.78);
+  }
+  28% { opacity: 1; }
+  to {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
+}
+
+@keyframes ovg-about-exit {
+  from {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateZ(0) scale(0.86);
+  }
+}
+
+@keyframes ovg-home-enter {
+  from {
+    column-gap: clamp(0.6rem, 1vw, 1.5rem);
+    opacity: 0.2;
+    transform: translate3d(0, -2rem, 0) scale(2.8);
+  }
+  18% { opacity: 1; }
+  to {
+    column-gap: 0;
+    opacity: 1;
+    transform: translate3d(0, -2rem, 0) scale(1);
+  }
+}
+
+@keyframes ovg-nav-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -0.45rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ovg-footer-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ovg-footer-exit {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (max-width: 44rem) {
+  .home-hero {
+    flex-direction: column;
+    gap: 1.5rem;
+    transform: translate3d(0, -2rem, 0);
+  }
+
+  .ovg-logo {
+    width: min(86vw, 25rem);
+  }
+
+  .tagline {
+    align-items: center;
+    margin: 0;
+    font-size: clamp(2.15rem, 10.5vw, 3.15rem);
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 34rem) {
+  .desktop-break {
+    display: none;
+  }
+
+  .about-main {
+    padding-inline: var(--page-gutter);
+  }
+
+  .footer-inner {
+    gap: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
